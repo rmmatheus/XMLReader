@@ -30,11 +30,13 @@
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 <body id="page-top" class="index">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- Anuncio 1 -->
+	<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-1471809324712777" data-ad-slot="4831912843"></ins>
+	<script type="text/javascript">	
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -62,6 +64,9 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contato</a>
                     </li>
+					<li class="hidden">
+                        <a id="botao_tabela" href="#services"></a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -86,13 +91,9 @@
             </div>
         </div>
     </header>
-	
-	<section>
-	<h2>XXXXXX</h2>
-	</section>
 
     <!-- XML Section -->
-    <section id="services" style="color:green" >
+    <section id="services" class="display_none">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -101,10 +102,19 @@
             </div>
             <div class="row text-center">
                 <div class="col-md-12">
-                    <table id="resultado"> 
-						<thead><tr>
-						<th>Livro</th>
-						</tr></thead>
+                    <table id="resultado" class="table table-striped table-bordered table-hover"> 
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>cNF</th>
+									<th>nserieSAT</th>
+									<th>nCFe</th>
+									<th>dEmi</th>
+									<th>hEmi</th>
+									<th>vCFe</th>
+									<th>LOTE</th>
+								</tr>
+							</thead>
 						<tbody></tbody>
 					</table>
                 </div>
@@ -117,8 +127,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">Sobre</h2>
                 </div>
             </div>
             <div class="row">
@@ -130,63 +139,14 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>2009-2011</h4>
-                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                    <h4>2015-2016</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">A linguagem de transferência de informações mais utilizada pelas grandes empresas de software hoje, sem dúvidas e o XML. Afim de facilitar a leitura das informações contidas nesses arquivos criamos a ferramenta XML Reader que possui uma grande utilidade para os usuários que desejam realizar a contabilidade de suas vendas de uma forma simples e pratica.</p>
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>March 2011</h4>
-                                    <h4 class="subheading">An Agency is Born</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>December 2012</h4>
-                                    <h4 class="subheading">Transition to Full Service</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>July 2014</h4>
-                                    <h4 class="subheading">Phase Two Expansion</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
-                            </div>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -270,13 +230,15 @@
 	$.noConflict();
 		<?php $timestamp = time();?>
 		
-		$(function() {
+		$(function() {	
 			var h = $('header').height();
-			$("#about").css("margin-top",h);
+			$("#about").css("margin-top",h*0.2);
+			
+			$(".active").removeClass("active");
 			
 			window.onresize = function(event) {
 				var h = $('header').height();
-				$("#about").css("margin-top",h);
+				$("#about").css("margin-top",h*0.2);
 			};
 			
 			$('#file_upload').uploadify({
@@ -288,7 +250,7 @@
 				'uploader' : 'uploadify.php',
 				'fileTypeDesc' : 'XML',
 				'fileTypeExts' : '*.xml',
-				'successTimeout' : 3,
+				'successTimeout' : 2,
 				'fileSizeLimit' : '1000KB',
 				'buttonText' : 'SELECIONAR ARQUIVO...',
 				'queueID'  : 'some_file_queue',
@@ -318,13 +280,43 @@
 				'onQueueComplete' : function(queueData) {
 					setTimeout(function() {
 						$('#some_file_queue').hide();
-						//$('#services').removeClass("display_none")
-					}, 3000);
+						$('#services').show();
+						var h = $('header').height();
+						$("#about").css("margin-top",0);
+						$("#services").css("margin-top",h*0.3);
+						
+						window.onresize = function(event) {
+							var h = $('header').height();
+							$("#services").css("margin-top",h*0.3);
+						};
+						
+						$('html, body').animate({
+							scrollTop: $("#services").offset().top
+						}, 100);
+						
+						
+					}, 2000);
 				}
 			});
 		
 		});
+		
 	</script>
+	
+	<!-- Piwik -->
+	<script type="text/javascript">
+	  var _paq = _paq || [];
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		var u="//cluster-piwik.locaweb.com.br/";
+		_paq.push(['setTrackerUrl', u+'piwik.php']);
+		_paq.push(['setSiteId', 2891]);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript><p><img src="//cluster-piwik.locaweb.com.br/piwik.php?idsite=2891" style="border:0;" alt="" /></p></noscript>
 
 </body>
 
