@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Leitor de XML para documentos fiscais NFe SAT">
+	<meta name="keywords" content="XML,Leitor XML, XML NFe, XML SAT, xmlreader, XML Leitor">
     <meta name="author" content="">
+	<meta name="robots" content="index, nofollow">
 
     <title>Leitor de XML</title>
 
@@ -24,8 +26,10 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	<script src="jquery.uploadify.min.js" type="text/javascript"></script>
+	<script src="dist/sweetalert.min.js"></script> 
 	<link rel="stylesheet" type="text/css" href="uploadify.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -49,7 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">XML READER</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Leitor XML</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -162,25 +166,25 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form id="formulario_email" onsubmit="enviar(); return false;">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Seu nome *" id="name" required data-validation-required-message="Por favor insira seu nome.">
+                                    <input type="text" class="form-control" placeholder="Seu nome *" name="nome" id="name" required data-validation-required-message="Por favor insira seu nome.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Seu Email *" id="email" required data-validation-required-message="Por favor insira seu e-mail.">
+                                    <input type="email" class="form-control" placeholder="Seu e-mail *" name="email" id="email" required data-validation-required-message="Por favor insira seu e-mail.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Your Phone" id="phone">
+                                    <input type="tel" class="form-control" placeholder="Seu telefone"  name="phone" id="phone">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="Sua mensagem *" id="message" required data-validation-required-message="Por favor insira sua mensagem"></textarea>
+                                    <textarea class="form-control" placeholder="Sua mensagem *" name="message" id="message" required data-validation-required-message="Por favor insira sua mensagem"></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -189,6 +193,7 @@
                                 <div id="success"></div>
                                 <button type="submit" class="btn btn-xl">Enviar mensagem</button>
                             </div>
+							<input type="Reset" value="Apagar tudo" class="display_none" id="apagar">
                         </div>
                     </form>
                 </div>
@@ -201,7 +206,7 @@
             <div class="row">
 				<div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; www.xmlreader.com.br 2016</span>
+                    <span class="copyright">Copyright &copy; www.leitorxml.com 2016</span>
                 </div>
 				<div class="col-md-4"></div>
             </div>
@@ -229,6 +234,21 @@
 	<script type="text/javascript">
 	$.noConflict();
 		<?php $timestamp = time();?>
+		
+		function enviar(){
+			$.ajax({
+				type: "POST",
+				url: "enviarEmail.php",
+				data: $("#formulario_email").serialize(),
+				success: function(data){
+					swal("Obrigado!", "Seu email foi enviado com sucesso", "success")
+					$("#name").val("");
+					$("#email").val("");
+					$("#phone").val("");
+					$("#message").val("");					
+				}
+			});
+		}
 		
 		$(function() {	
 			var h = $('header').height();
@@ -266,7 +286,8 @@
 							 alert('Erro ao tentar ação!');
 					   },
 					   success: function( texto ) {
-							$("#resultado tbody").append(texto);						   
+							$("#resultado tbody").append(texto);
+							$("#resultado2 tbody").append(texto2);
 					   },
 					   beforeSend: function() {
 					   }
@@ -303,20 +324,16 @@
 		
 	</script>
 	
-	<!-- Piwik -->
-	<script type="text/javascript">
-	  var _paq = _paq || [];
-	  _paq.push(['trackPageView']);
-	  _paq.push(['enableLinkTracking']);
-	  (function() {
-		var u="//cluster-piwik.locaweb.com.br/";
-		_paq.push(['setTrackerUrl', u+'piwik.php']);
-		_paq.push(['setSiteId', 2891]);
-		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-	  })();
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-72487250-1', 'auto');
+	  ga('send', 'pageview');
+
 	</script>
-	<noscript><p><img src="//cluster-piwik.locaweb.com.br/piwik.php?idsite=2891" style="border:0;" alt="" /></p></noscript>
 
 </body>
 
