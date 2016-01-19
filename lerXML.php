@@ -6,30 +6,40 @@ $nome_arquivo = $_POST["arquivo"]["name"];
 
 $caminho = "uploads/".$nome_arquivo;
 
-$xml = simplexml_load_file($caminho);
+$xml = simplexml_load_file($caminho);  //or die("ERRO: Nao foi possivel abrir o arquivo XML");
 
 $valor = file_get_contents($caminho);
-$valor = substr($valor, 1, 3);
+$valor = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $valor);
+$varCFeReceita = substr($valor, 1, 6);
+$varCFeCaixa = substr($valor, 1, 3);
 
-echo "<tr>";
+//Lendo arquivo LOTE AUTORIZADO, Baixado da receita
 
-if(strpos($valor,"env") === 0){
-	foreach($xml->LoteCFe as $LoteCFe)
+if(strpos($varCFeReceita,"envCFe") === 0)
+{
+	foreach($xml->children() as $LoteCFe)
 	{
-		echo "<td>".$LoteCFe->CFe->infCFe["Id"]."</td>";
-		echo "<td>".$LoteCFe->CFe->infCFe->ide->cNF."</td>";
-		echo "<td>".$LoteCFe->CFe->infCFe->ide->nserieSAT."</td>";
-		echo "<td>".$LoteCFe->CFe->infCFe->ide->nCFe."</td>";
-		echo "<td>".$LoteCFe->CFe->infCFe->ide->dEmi."</td>";
-		echo "<td>".$LoteCFe->CFe->infCFe->ide->hEmi."</td>";
-		echo "<td>".$LoteCFe->CFe->infCFe->total->vCFe."</td>";
-			
+		foreach($LoteCFe->children() as $CFe)
+		{
+			echo "<tr>";
+			echo "<td>".$CFe->infCFe["Id"]."</td>";
+			echo "<td>".$CFe->infCFe->ide->cNF."</td>";
+			echo "<td>".$CFe->infCFe->ide->nserieSAT."</td>";
+			echo "<td>".$CFe->infCFe->ide->nCFe."</td>";
+			echo "<td>".$CFe->infCFe->ide->dEmi."</td>";
+			echo "<td>".$CFe->infCFe->ide->hEmi."</td>";
+			echo "<td>".$CFe->infCFe->total->vCFe."</td>";
+			$lote = recuperaLote($xml);	
+			echo "</tr>";		
+		}		
 	}
-	$lote = recuperaLote($xml);	
-	
-}else{
+}
+//Lendo arquivo Cfwin AUTORIZADO
+if(strpos($varCFeCaixa,"CFe") === 0)
+{
 	foreach($xml->infCFe as $infCFe)
 	{
+		echo "<tr>";
 		echo "<td>".$infCFe["Id"]."</td>";
 		echo "<td>".$infCFe->ide->cNF."</td>";
 		echo "<td>".$infCFe->ide->nserieSAT."</td>";
@@ -38,12 +48,12 @@ if(strpos($valor,"env") === 0){
 		echo "<td>".$infCFe->ide->hEmi."</td>";
 		echo "<td>".$infCFe->total->vCFe."</td>";
 		echo "<td>-</td>";
+		echo "</tr>";
 	}
 }
-
-echo "</tr>";
 	
-function recuperaLote($xml){
+function recuperaLote($xml)
+{
 	foreach($xml->idLote as $idLote)
 	{
 		echo "<td>".$idLote."</td>";
