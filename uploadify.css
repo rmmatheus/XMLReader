@@ -33,6 +33,11 @@ body {
     width: 300px;
 }
 
+#scroll {
+  height:387px;
+  overflow:auto;
+}
+
 #SWFUpload_0{
 	margin-left:-150px;
 }
